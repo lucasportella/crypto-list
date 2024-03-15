@@ -1,11 +1,10 @@
 import './App.css'
+import AppRoutes from './Routes'
 
 function App() {
 
   return (
-    <>
-    <span>CRYPTO LIST</span>
-    </>
+    <AppRoutes />
   )
 }
 
