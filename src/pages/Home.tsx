@@ -1,9 +1,15 @@
 import React from "react";
-import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { addCrypto, selectStatus } from "../features/cryptoList/cryptoListSlice";
+import {
+  useAppSelector,
+  // useAppDispatch
+} from "../app/hooks";
+import {
+  // addCrypto,
+  selectStatus
+} from "../features/cryptoList/cryptoListSlice";
 import List from "../features/cryptoList/CryptoList";
 const Home: React.FC = () => {
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
   const status = useAppSelector(selectStatus)
   const dataToRender = () => {
     switch (status) {
@@ -18,12 +24,17 @@ const Home: React.FC = () => {
     }
   }
   return (
-    <div className="flex justify-center w-full items-center h-screen border">
-      <button
-        onClick={() => { dispatch(addCrypto({})) }}
-        className="border p-2"
-      >Click</button>
-      {dataToRender()}
+    <div className="w-full h-full">
+      <section className="flex flex-col justify-center center-items border">
+        <div className="flex justify-center items-center p-2 gap-2">
+          <span>Click the button to refresh list!</span>
+          <button
+            // onClick={() => { dispatch(addCrypto({})) }}
+            className="border px-4 py-1 rounded"
+          >Click</button>
+        </div>
+        {dataToRender()}
+      </section>
 
     </div>
   );
