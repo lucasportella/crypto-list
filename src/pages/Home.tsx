@@ -8,6 +8,7 @@ import {
   selectStatus
 } from "../features/cryptoList/cryptoListSlice";
 import List from "../features/cryptoList/CryptoList";
+import { Wallet } from "../features/wallet/Wallet";
 const Home: React.FC = () => {
   // const dispatch = useAppDispatch()
   const status = useAppSelector(selectStatus)
@@ -26,6 +27,7 @@ const Home: React.FC = () => {
   return (
     <div className="w-full h-full">
       <section className="flex flex-col justify-center center-items border">
+      <Wallet />
         <div className="flex justify-center items-center p-2 gap-2">
           <span>Click the button to refresh list!</span>
           <button
@@ -36,7 +38,7 @@ const Home: React.FC = () => {
         {dataToRender()}
       </section>
 
-    </div>
-  );
+      </div>
+      );
 }
-export default Home;
+      export default Home;
