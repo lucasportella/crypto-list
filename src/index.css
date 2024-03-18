@@ -1,3 +1,19 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+p, button {
+  @apply text-gray-300
+}
+button {
+  @apply border-gray-600
+}
+.home-button {
+  @apply rounded px-4 py-1 bg-sky-900 text-sm 
+}
+.title {
+  @apply text-white text-sm
+}
+.subtitle {
+  @apply text-xs text-gray-400
+}
