@@ -25,20 +25,19 @@ const Home: React.FC = () => {
     }
   }
   return (
-    <div className="w-full h-full">
-      <section className="flex flex-col justify-center center-items border">
-      <Wallet />
-        <div className="flex justify-center items-center p-2 gap-2">
-          <span>Click the button to refresh list!</span>
+    <section className="w-full h-screen flex flex-col px-10 md:p-0">
+      <section className=" w-full h-full self-center flex flex-col justify-around lg:w-3/5 ">
+        <div className="flex  items-center gap-2  justify-start p-2 self-end">
+          <Wallet />
           <button
             // onClick={() => { dispatch(addCrypto({})) }}
-            className="border px-4 py-1 rounded"
-          >Click</button>
+            className="home-button"
+          >refresh list</button>
         </div>
         {dataToRender()}
       </section>
 
-      </div>
-      );
+    </section >
+  );
 }
-      export default Home;
+export default Home;
