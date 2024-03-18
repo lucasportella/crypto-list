@@ -26,9 +26,8 @@ export const Wallet = () => {
   }
 
   const connectButton = () => (
-    <button onClick={handleConnect}>Connect</button>
+    <button onClick={handleConnect} className="home-button">Connect</button>
   )
-
   const walletPanel = () => (
     <article>
       <h3>
@@ -46,7 +45,17 @@ export const Wallet = () => {
 
   return (
     <>
-      {showWallets && <WalletSelect />}
+      {showWallets &&
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className=" bg-gray-800 flex justify-center items-center rounded-lg shadow-lg p-6 relative w-1/4 h-2/5">
+            <button
+              onClick={() => setShowWallets(false)}
+              className="absolute right-2 top-2 px-2 border rounded">Voltar</button>
+            <WalletSelect />
+          </div>
+
+        </div>
+      }
       {connected && renderWalletPanel()}
       {!connected && renderConnectButton()}
     </>

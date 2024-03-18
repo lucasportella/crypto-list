@@ -2,23 +2,40 @@ import React from "react";
 // import { selectCryptos } from "./cryptoListSlice";
 // import { useAppSelector } from "../../app/hooks";
 import { mock } from "./mock";
+import { useNavigate } from "react-router-dom";
 const List: React.FC = () => {
   // const cryptos = useAppSelector(selectCryptos)
-  const renderData = mock.map(item => (
-    <button key={item.id} className="flex border rounded mb-4 w-4/5 px-2 py-2 items-center gap-4 justify-between">
-      <div className="flex gap-2  items-center ">
-        <img src={item.image} alt={item.id} width={"50px"} height={"50px"} />
-        <span>{item.id}</span>
+  const navigate = useNavigate()
+  const renderData = mock.map((item, index) => (
+    <section key={item.id} className="flex border rounded-lg mb-4 w-full px-2 py-2 items-center gap-4 justify-between border-gray-600 lg:w-3/5 ">
+      <div className="flex gap-2 items-center title">
+        <span># {index + 1}</span>
+        <img
+          src={item.image}
+          alt={item.id}
+          width={"50px"}
+          height={"50px"}
+          className="rounded-full"
+        />
+        <div>
+          <span>{item.id}</span>
+          <div className="flex gap-1 items-center subtitle">
+            <span>$</span>
+            <span>{item.current_price}</span>
+          </div>
+        </div>
 
       </div>
-      <div className="border flex gap-2">
-        <span>$</span>
-        <span>{item.current_price}</span>
-      </div>
-    </button>
+      <section className="flex items-center  gap-2">
+
+        <button className="home-button" onClick={() => { navigate(`${item.id}`) }}>Details</button>
+
+      </section>
+    </section>
   ))
   return (
-    <section className="border flex flex-col justify-center items-center py-6 w-4/5 self-center rounded-xl overflow-hidden h-full">
+    <section className="border flex flex-col border-gray-600 px-2 items-center py-6 w-full self-center  rounded-md gap-2 overflow-auto h-4/5 lg:px-0  md:w-4/5">
+      {/* <span className="title px-2">Top 10 crypto currencies</span> */}
       {renderData}
     </section>
   );
