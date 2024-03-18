@@ -4,9 +4,9 @@ import { type PayloadAction } from "@reduxjs/toolkit"
 interface walletSliceState {
   connected: boolean
   providers: EIP6963ProviderDetail[]
-  chosenProvider: EIP6963ProviderDetail | undefined
+  chosenProvider: EIP1193Provider | undefined
   address: string | undefined
-  balance: number | undefined
+  balance: string | undefined
 }
 
 const initialState: walletSliceState = {
@@ -30,13 +30,13 @@ export const walletSlice = createAppSlice({
     setProviders: create.reducer((state, action: PayloadAction<EIP6963ProviderDetail[]>) => {
       state.providers = action.payload
     }),
-    setChosenProvider: create.reducer((state, action: PayloadAction<EIP6963ProviderDetail>) => {
+    setChosenProvider: create.reducer((state, action: PayloadAction<EIP1193Provider>) => {
       state.chosenProvider = action.payload
     }),
     setAddress: create.reducer((state, action: PayloadAction<string>) => {
       state.address = action.payload
     }),
-    getBalance: create.reducer((state, action: PayloadAction<number>) => {
+    setBalance: create.reducer((state, action: PayloadAction<string>) => {
       state.balance = action.payload
     }),
   }),
@@ -44,10 +44,11 @@ export const walletSlice = createAppSlice({
     selectConnected: wallet => wallet.connected,
     selectProviders: wallet => wallet.providers,
     selectChosenProvider: wallet => wallet.chosenProvider,
+    selectAddress: wallet => wallet.address,
     selectBalance: wallet => wallet.balance,
   }
 })
 
-export const { connect, disconnect, setAddress, getBalance } = walletSlice.actions
+export const { connect, disconnect, setAddress, setBalance, setChosenProvider, setProviders } = walletSlice.actions
 
-export const { selectConnected, selectChosenProvider, selectProviders, selectBalance } = walletSlice.selectors
+export const { selectConnected, selectChosenProvider, selectProviders, selectBalance, selectAddress } = walletSlice.selectors
