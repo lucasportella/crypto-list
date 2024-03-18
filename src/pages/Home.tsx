@@ -2,6 +2,7 @@ import React from "react";
 import { useAppSelector, useAppDispatch } from "../app/hooks";
 import { addCrypto, selectStatus } from "../features/cryptoList/cryptoListSlice";
 import List from "../features/cryptoList/CryptoList";
+import { Wallet } from "../features/wallet/Wallet";
 const Home: React.FC = () => {
   const dispatch = useAppDispatch()
   const status = useAppSelector(selectStatus)
@@ -19,6 +20,7 @@ const Home: React.FC = () => {
   }
   return (
     <div className="flex justify-center w-full items-center h-screen border">
+      <Wallet />
       <button
         onClick={() => { dispatch(addCrypto({})) }}
         className="border p-2"

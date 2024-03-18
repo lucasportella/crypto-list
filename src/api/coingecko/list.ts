@@ -1,4 +1,4 @@
-import { ICrypto } from "../interfaces/apiTypes";
+import { ICrypto } from "../../interfaces/apiTypes";
 import request, { BASE_URL } from "./index";
 
 
