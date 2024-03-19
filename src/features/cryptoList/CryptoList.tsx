@@ -3,6 +3,7 @@ import React from "react";
 // import { useAppSelector } from "../../app/hooks";
 import { mock } from "./mock";
 import { useNavigate } from "react-router-dom";
+import { formatDollarValue } from "../../utils/formatString";
 const List: React.FC = () => {
   // const cryptos = useAppSelector(selectCryptos)
   const navigate = useNavigate()
@@ -21,7 +22,7 @@ const List: React.FC = () => {
           <span>{item.id}</span>
           <div className="flex gap-1 items-center subtitle">
             <span>$</span>
-            <span>{item.current_price}</span>
+            <span>{formatDollarValue(item.current_price)}</span>
           </div>
         </div>
 
