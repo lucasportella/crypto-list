@@ -17,3 +17,12 @@ button {
 .subtitle {
   @apply text-xs text-gray-400
 }
+.tooltipStyles {
+  @apply rounded  p-2 bg-white opacity-70;
+  -webkit-box-shadow: 3px 3px 8px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 3px 3px 8px 5px rgba(0, 0, 0, 0.05);
+
+}
+.tooltipStyles p{
+  color: #8884d8;
+}
