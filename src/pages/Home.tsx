@@ -1,10 +1,16 @@
 import React from "react";
-import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { addCrypto, selectStatus } from "../features/cryptoList/cryptoListSlice";
+import {
+  useAppSelector,
+  // useAppDispatch
+} from "../app/hooks";
+import {
+  // addCrypto,
+  selectStatus
+} from "../features/cryptoList/cryptoListSlice";
 import List from "../features/cryptoList/CryptoList";
 import { Wallet } from "../features/wallet/Wallet";
 const Home: React.FC = () => {
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
   const status = useAppSelector(selectStatus)
   const dataToRender = () => {
     switch (status) {
@@ -19,15 +25,19 @@ const Home: React.FC = () => {
     }
   }
   return (
-    <div className="flex justify-center w-full items-center h-screen border">
-      <Wallet />
-      <button
-        onClick={() => { dispatch(addCrypto({})) }}
-        className="border p-2"
-      >Click</button>
-      {dataToRender()}
+    <section className="w-full h-screen flex flex-col px-10 md:p-0">
+      <section className=" w-full h-full self-center flex flex-col justify-around lg:w-3/5 ">
+        <div className="flex  items-center gap-2  justify-start p-2 self-end">
+          <Wallet />
+          <button
+            // onClick={() => { dispatch(addCrypto({})) }}
+            className="home-button"
+          >refresh list</button>
+        </div>
+        {dataToRender()}
+      </section>
 
-    </div>
+    </section >
   );
 }
 export default Home;

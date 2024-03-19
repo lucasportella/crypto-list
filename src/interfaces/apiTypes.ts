@@ -30,3 +30,16 @@ export interface ICrypto {
   };
   last_updated: string;
 }
+export interface IChart {
+  time: string,
+  price: number,
+  market_caps: number,
+  volume: string
+}
+export interface CustomTooltipProps {
+  active?: boolean;
+  payload?: payload[];
+}
+interface payload {
+  payload : IChart
+}
