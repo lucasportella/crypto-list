@@ -26,7 +26,7 @@ const Details: React.FC = () => {
     }
   }
   return (
-    <section className="w-full h-screen flex flex-col px-10 md:px-0">
+    <section className="w-full h-full flex flex-col px-10 md:px-0 lg:h-screen overflow-auto">
       <section className=" w-full h-full self-center flex flex-col justify-around lg:w-4/5">
         <div className="flex  items-center gap-2 h-1/6 justify-start p-2 self-end">
           <Wallet />
