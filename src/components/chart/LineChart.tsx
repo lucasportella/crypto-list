@@ -1,7 +1,7 @@
 import React from "react";
-import { priceData } from "../../features/details/mock";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from "recharts";
 import { formatDollarValue, formatHour } from "../../utils/formatString";
+import { ICryptoVariation } from "../../api/coingecko/cryptoVariation";
 
 export interface IChart {
   time: string,
@@ -14,9 +14,11 @@ export interface CustomTooltipProps {
   payload?: payload[];
 }
 export interface payload {
-  payload : IChart
+  payload: IChart
 }
-
+interface cryptoVariation {
+  cryptoVariation: ICryptoVariation
+}
 const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const { time, price, volume } = payload[0].payload;
@@ -30,14 +32,14 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
   }
   return null;
 };
-const Chart: React.FC = () => {
-  const data = priceData.prices.map((item, index) => (
+const Chart: React.FC<cryptoVariation> = (priceData) => {
+  const data = priceData.cryptoVariation.prices.map((item, index) => (
 
     {
       time: formatHour(item[0]),
       price: item[1],
-      market_caps: priceData.market_caps[index][1],
-      volume: formatDollarValue(priceData.total_volumes[index][1])
+      market_caps: priceData.cryptoVariation.market_caps[index][1],
+      volume: formatDollarValue(priceData.cryptoVariation.total_volumes[index][1])
     }
   ))
   const minYValue = Math.min(...data.map(entry => Math.min(entry.price)));

@@ -1,13 +1,20 @@
 import React from "react";
-// import { selectCryptos } from "./cryptoListSlice";
-// import { useAppSelector } from "../../app/hooks";
-import { mock } from "./mock";
+import { selectCryptos } from "../features/cryptoList/cryptoListSlice";
+import { useAppSelector } from "../app/hooks";
 import { useNavigate } from "react-router-dom";
-import { formatDollarValue } from "../../utils/formatString";
-const List: React.FC = () => {
-  // const cryptos = useAppSelector(selectCryptos)
+import { formatDollarValue } from "../utils/formatString";
+import { useAppDispatch } from "../app/hooks";
+import { addCryptoDetails } from "../features/cryptoDetails/CryptoSlice";
+const CryptoList: React.FC = () => {
+  const cryptos = useAppSelector(selectCryptos)
+  const dispatch = useAppDispatch()
+
   const navigate = useNavigate()
-  const renderData = mock.map((item, index) => (
+  const handleClick = (id: string) => {
+    navigate(`${id}`)
+    dispatch(addCryptoDetails(id))
+  }
+  const renderData = cryptos.map((item, index) => (
     <section key={item.id} className="flex border rounded-lg mb-4 w-full px-2 py-2 items-center gap-4 justify-between border-gray-600 lg:w-3/5 ">
       <div className="flex gap-2 items-center title">
         <span># {index + 1}</span>
@@ -29,7 +36,7 @@ const List: React.FC = () => {
       </div>
       <section className="flex items-center  gap-2">
 
-        <button className="home-button" onClick={() => { navigate(`${item.id}`) }}>Details</button>
+        <button className="home-button" onClick={() => { handleClick(item.id) }}>Details</button>
 
       </section>
     </section>
@@ -41,4 +48,4 @@ const List: React.FC = () => {
     </section>
   );
 }
-export default List;
+export default CryptoList;

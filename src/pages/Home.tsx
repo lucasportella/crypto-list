@@ -1,21 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   useAppSelector,
-  // useAppDispatch
+  useAppDispatch
 } from "../app/hooks";
 import {
-  // addCrypto,
+  addCrypto,
   selectStatus
 } from "../features/cryptoList/cryptoListSlice";
-import List from "../features/cryptoList/CryptoList";
+import CryptoList from "../components/CryptoList";
 import { Wallet } from "../features/wallet/Wallet";
+
 const Home: React.FC = () => {
-  // const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(addCrypto({}))
+  }, [dispatch])
+
   const status = useAppSelector(selectStatus)
+
   const dataToRender = () => {
     switch (status) {
       case "idle":
-        return <List />
+        return <CryptoList />
       case "failed":
         return <p>Api has no return... </p>
       case "loading":

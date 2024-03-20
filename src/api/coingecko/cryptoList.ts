@@ -1,3 +1,13 @@
+import request, { BASE_URL } from "./index";
+
+const requestCryptoList = () => {
+  const data: Promise<ICrypto[] | undefined> = request(
+    `${BASE_URL}coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1`, "GET")
+  return data
+}
+
+export default requestCryptoList
+
 export interface ICrypto {
   id: string;
   symbol: string;
@@ -29,17 +39,4 @@ export interface ICrypto {
     percentage: number;
   };
   last_updated: string;
-}
-export interface IChart {
-  time: string,
-  price: number,
-  market_caps: number,
-  volume: string
-}
-export interface CustomTooltipProps {
-  active?: boolean;
-  payload?: payload[];
-}
-interface payload {
-  payload : IChart
 }

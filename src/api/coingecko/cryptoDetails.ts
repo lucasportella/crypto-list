@@ -2,7 +2,7 @@ import request, { BASE_URL } from "./index";
 
 // https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1&precision=2
 
- const requestCryptoById = async (cryptoId: string) => {
+const requestCryptoDetails = async (cryptoId: string) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const data: any = await request(
     `${BASE_URL}coins/${cryptoId}`, "GET")
@@ -12,7 +12,7 @@ import request, { BASE_URL } from "./index";
   return dataToBeUsed
 }
 
-export default requestCryptoById
+export default requestCryptoDetails
 
 export interface Details {
   id: string,
