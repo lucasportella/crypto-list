@@ -1,6 +1,6 @@
 // import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "../../app/createAppSlice"
-import { ICrypto } from "../../interfaces/apiTypes"
+import { ICrypto } from "../../api/coingecko/list"
 import requestCoinsList from "../../api/coingecko/list"
 
 export interface CryptoListState {

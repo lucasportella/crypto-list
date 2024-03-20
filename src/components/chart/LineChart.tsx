@@ -2,7 +2,20 @@ import React from "react";
 import { priceData } from "../../features/details/mock";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from "recharts";
 import { formatDollarValue, formatHour } from "../../utils/formatString";
-import { CustomTooltipProps } from "../../interfaces/apiTypes";
+
+export interface IChart {
+  time: string,
+  price: number,
+  market_caps: number,
+  volume: string
+}
+export interface CustomTooltipProps {
+  active?: boolean;
+  payload?: payload[];
+}
+export interface payload {
+  payload : IChart
+}
 
 const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
   if (active && payload && payload.length) {
