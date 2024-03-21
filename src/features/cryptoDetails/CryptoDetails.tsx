@@ -48,48 +48,55 @@ const CryptoDetails: React.FC = () => {
     dispatch(addVariation(cryptoId))
   }, [dispatch, cryptoId])
   return (
-    <section key={cryptoDetails.id} className="flex border rounded-lg w-full  md:p-10 p-2 gap-4 border-gray-600 flex-col h-fit min-h-full">
-      <div className="flex gap-2 items-center">
-        <img
-          src={cryptoDetails.image.large}
-          alt={cryptoDetails.id}
-          width={"30px"}
-          height={"20px"}
-          className="rounded-full"
-        />
-        <div>
-          <span className="text-white text-lg font-bold tracking-wide"> {cryptoDetails.id}</span>
-        </div>
-      </div>
-      <section className="h-full flex flex-col gap-6 w-full ">
+    <>
+      {
+        cryptoDetails.id && (
+          <section key={cryptoDetails.id} className="flex border rounded-lg w-full  md:p-10 p-2 gap-4 border-gray-600 flex-col h-fit min-h-full">
+            <div className="flex gap-2 items-center">
+              <img
+                src={cryptoDetails.image.large}
+                alt={cryptoDetails.id}
+                width={"30px"}
+                height={"20px"}
+                className="rounded-full"
+              />
+              <div>
+                <span className="text-white text-lg font-bold tracking-wide"> {cryptoDetails.id}</span>
+              </div>
+            </div>
+            <section className="h-full flex flex-col gap-6 w-full ">
 
-        <section className="flex  flex-col   lg:justify-between gap-8  lg:h-2/4 lg:flex-row lg-min-h-2/4 ">
-          {cryptoDetails.id && renderData()}
-          <section className="w-full h-full relative  flex flex-col self-center">
-            <p className=" absolute right-8 -mt-5 text-sm border border-sky-900 bg-sky-900 px-2 rounded text-gray-300 lg:-mt-6">24h</p>
-            <Chart cryptoVariation={cryptoVariation} />
+              <section className="flex  flex-col   lg:justify-between gap-8  lg:h-2/4 lg:flex-row lg-min-h-2/4 ">
+                {renderData()}
+                <section className="w-full h-full relative  flex flex-col self-center">
+                  <p className=" absolute right-8 -mt-5 text-sm border border-sky-900 bg-sky-900 px-2 rounded text-gray-300 lg:-mt-6">24h</p>
+                  <Chart cryptoVariation={cryptoVariation} />
+                </section>
+              </section>
+              <section className="flex flex-col m-4  items-center gap-2 h-fit ">
+                <h1 className="title border-b border-gray-600 w-full text-start">About {cryptoDetails.id}</h1>
+
+                <div className="w-full">
+                  <p className="text-sm text-gray-400 leading-relaxed text-justify lg:text-left tracking-wide  w-full overflow-auto">
+                    {showFull ? cryptoDetails.description.en : `${cryptoDetails.description.en.slice(0, maxLength)}${cryptoDetails.description.en.length > maxLength ? '...' : ''}`}
+                    {cryptoDetails.description.en.length > maxLength && (
+                      <button
+                        onClick={toggleDescription}
+                        className="ml-2 underline"
+                      >
+                        {showFull ? 'Show less' : 'Show more'}
+                      </button>
+                    )}
+                  </p>
+
+                </div>
+              </section>
+            </section>
           </section>
-        </section>
-        <section className="flex flex-col m-4  items-center gap-2 h-fit ">
-          <h1 className="title border-b border-gray-600 w-full text-start">About {cryptoDetails.id}</h1>
 
-          <div className="w-full">
-            <p className="text-sm text-gray-400 leading-relaxed text-justify lg:text-left tracking-wide  w-full overflow-auto">
-              {showFull ? cryptoDetails.description.en : `${cryptoDetails.description.en.slice(0, maxLength)}${cryptoDetails.description.en.length > maxLength ? '...' : ''}`}
-              {cryptoDetails.description.en.length > maxLength && (
-                <button
-                  onClick={toggleDescription}
-                  className="ml-2 underline"
-                >
-                  {showFull ? 'Show less' : 'Show more'}
-                </button>
-              )}
-            </p>
-
-          </div>
-        </section>
-      </section>
-    </section>
+        )
+      }
+    </>
   );
 }
 export default CryptoDetails;
