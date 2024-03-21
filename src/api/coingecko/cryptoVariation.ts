@@ -1,8 +1,8 @@
-import request, { BASE_URL } from "./index";
+import request, { BASE_URL, COIN_GECKO_API, API_KEY } from "./index";
 
 const requestCryptoVariation = async (id: string): Promise<ICryptoVariation> => {
   const data = await request(
-    `${BASE_URL}coins/${id}/market_chart?vs_currency=usd&days=1`, "GET")
+    `${BASE_URL}/coins/${id}/market_chart?vs_currency=usd&days=1&${COIN_GECKO_API}=${API_KEY}`, "GET")
   return data
 }
 

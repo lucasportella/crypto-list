@@ -1,14 +1,12 @@
-import request, { BASE_URL } from "./index";
+import request, { BASE_URL, COIN_GECKO_API, API_KEY } from "./index";
 
-// https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1&precision=2
 
 const requestCryptoDetails = async (cryptoId: string) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const data: any = await request(
-    `${BASE_URL}coins/${cryptoId}`, "GET")
+  const data: Details = await request(
+    `${BASE_URL}/coins/${cryptoId}?${COIN_GECKO_API}=${API_KEY}`, "GET")
   const { id, symbol, name, description, image, market_data, market_cap_rank } = data
 
-  const dataToBeUsed: Details = { id, symbol, name, description, image, market_data, market_cap_rank }
+  const dataToBeUsed = { id, symbol, name, description, image, market_data, market_cap_rank }
   return dataToBeUsed
 }
 

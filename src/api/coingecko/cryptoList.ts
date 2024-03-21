@@ -1,8 +1,8 @@
-import request, { BASE_URL } from "./index";
+import request, { BASE_URL, COIN_GECKO_API, API_KEY } from "./index";
 
 const requestCryptoList = () => {
   const data: Promise<ICrypto[] | undefined> = request(
-    `${BASE_URL}coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1`, "GET")
+    `${BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&${COIN_GECKO_API}=${API_KEY}`, "GET")
   return data
 }
 

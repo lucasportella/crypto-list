@@ -1,5 +1,6 @@
-export const BASE_URL = "https://api.coingecko.com/api/v3/"
-const API_KEY = import.meta.env.VITE_COINGECKO_API_KEY
+export const BASE_URL = "https://api.coingecko.com/api/v3"
+export const COIN_GECKO_API = "x_cg_demo_api_key"
+export const API_KEY: string = import.meta.env.VITE_COINGECKO_API_KEY
 // need a server side like next js to not expose key
 
 const request = async (route: string, type: string) => {
@@ -8,7 +9,7 @@ const request = async (route: string, type: string) => {
       method: type,
       headers: {
         'Content-Type': 'application/json',
-        "X-CoinAPI-Key": API_KEY
+        // cant pass coin gecko api key here since it's bugged
       },
 
     });
