@@ -9,6 +9,7 @@ import {
 } from "../features/cryptoList/cryptoListSlice";
 import CryptoList from "../components/CryptoList";
 import { Wallet } from "../features/wallet/Wallet";
+import { Loading } from "../components/loading/loading";
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -25,7 +26,7 @@ const Home: React.FC = () => {
       case "failed":
         return <p>Api has no return... </p>
       case "loading":
-        return <p>Loading...</p>
+        return <Loading />
       default:
         return <p>Something went wrong...</p>
     }

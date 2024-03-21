@@ -26,3 +26,20 @@ button {
 .tooltipStyles p{
   color: #8884d8;
 }
+.loading-circle {
+  @apply h-28 w-28 border-8 border-solid border-b-transparent border-sky-900 rounded-full;
+  animation: drawBorder 1s linear infinite;
+ 
+}
+
+@keyframes drawBorder {
+  0% {
+    @apply top-0 left-0 ;
+    transform: rotate(0deg);
+  }
+
+  100% {
+    @apply top-3/4 left-3/4;
+    transform: rotate(360deg);
+  }
+}

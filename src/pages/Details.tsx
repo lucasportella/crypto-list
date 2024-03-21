@@ -3,12 +3,11 @@ import {
   useAppSelector,
   // useAppDispatch
 } from "../app/hooks";
-import {
-  selectStatus
-} from "../features/cryptoList/cryptoListSlice";
+import { selectStatus } from "../features/cryptoDetails/CryptoSlice";
 import { Wallet } from "../features/wallet/Wallet";
 import { useNavigate } from "react-router-dom";
 import CryptoDetails from "../features/cryptoDetails/CryptoDetails";
+import { Loading } from "../components/loading/loading";
 const Details: React.FC = () => {
   const status = useAppSelector(selectStatus)
   const navigate = useNavigate()
@@ -20,7 +19,7 @@ const Details: React.FC = () => {
       case "failed":
         return <p>Api has no return... </p>
       case "loading":
-        return <p>Loading...</p>
+        return <Loading />
       default:
         return <p>Something went wrong...</p>
     }
