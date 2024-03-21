@@ -1,11 +1,15 @@
-import request, { BASE_URL, COIN_GECKO_API, API_KEY } from "./index";
+import request, { BASE_URL, COIN_GECKO_API, API_KEY, RequestResponse } from "./index";
 
 
 const requestCryptoDetails = async (cryptoId: string) => {
-  const data: Details = await request(
+  const response: RequestResponse = await request(
     `${BASE_URL}/coins/${cryptoId}?${COIN_GECKO_API}=${API_KEY}`, "GET")
-  const { id, symbol, name, description, image, market_data, market_cap_rank } = data
 
+  if (response.error.hasError) {
+    throw new Error(`Error while fetching ${cryptoId} details.`);
+  }
+  const data = response.data as Details
+  const { id, symbol, name, description, image, market_data, market_cap_rank } = data
   const dataToBeUsed = { id, symbol, name, description, image, market_data, market_cap_rank }
   return dataToBeUsed
 }
