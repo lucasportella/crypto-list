@@ -1,4 +1,3 @@
-// import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "../../app/createAppSlice"
 import { ICryptoVariation } from "../../api/coingecko/cryptoVariation"
 import requestCryptoVariation from "../../api/coingecko/cryptoVariation"

@@ -2,7 +2,8 @@ import React from "react";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from "recharts";
 import { formatDollarValue, formatHour } from "../../utils/formatString";
 import { ICryptoVariation } from "../../api/coingecko/cryptoVariation";
-
+// import { useAppDispatch } from "../../app/hooks";
+// import { selectStatus } from "../../features/cryptoVariation/cryptoVariationSlice";
 export interface IChart {
   time: string,
   price: number,
@@ -33,6 +34,7 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
   return null;
 };
 const Chart: React.FC<cryptoVariation> = (priceData) => {
+  // const status = useAppDispatch(selectStatus)
   const data = priceData.cryptoVariation.prices.map((item, index) => (
 
     {

@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { addVariation, selectVariation } from "../cryptoVariation/cryptoVariationSlice";
 import { addCryptoDetails } from "./CryptoSlice";
 import { useAppDispatch } from "../../app/hooks";
-import { ICryptoVariation } from "../../api/coingecko/cryptoVariation";
+// import { ICryptoVariation } from "../../api/coingecko/cryptoVariation";
 
 const CryptoDetails: React.FC = () => {
   const [showFull, setShowFull] = useState(false);
@@ -15,7 +15,6 @@ const CryptoDetails: React.FC = () => {
   const cryptoDetails = useAppSelector(selectDetails)
   const cryptoVariation = useAppSelector(selectVariation)
   const dispatch = useAppDispatch()
-  // console.log(cryptoVariation)
   const maxLength = 400
   const location = useLocation()
   const cryptoId = location.pathname.slice(1)
@@ -65,7 +64,7 @@ const CryptoDetails: React.FC = () => {
       <section className="h-full flex flex-col gap-6 w-full ">
 
         <section className="flex  flex-col   lg:justify-between gap-8  lg:h-2/4 lg:flex-row lg-min-h-2/4 ">
-          {renderData()}
+          {cryptoDetails.id && renderData()}
           <section className="w-full h-full relative  flex flex-col self-center">
             <p className=" absolute right-8 -mt-5 text-sm border border-sky-900 bg-sky-900 px-2 rounded text-gray-300 lg:-mt-6">24h</p>
             <Chart cryptoVariation={cryptoVariation} />
