@@ -23,7 +23,7 @@ const InitialState: Details = {
 }
 export interface CryptoDetailsState {
   crypto: Details
-  status: "idle" | "loading" | "failed"
+  status: "idle" | "loading" | "failed" | "success"
 }
 const initialState: CryptoDetailsState = {
   crypto: InitialState,
@@ -42,7 +42,7 @@ export const cryptoDetailsSlice = createAppSlice({
           state.status = "loading"
         },
         fulfilled: (state, action) => {
-          state.status = "idle"
+          state.status = "success"
           if (action.payload) {
             state.crypto = action.payload
           }

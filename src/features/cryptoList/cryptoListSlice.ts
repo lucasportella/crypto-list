@@ -5,7 +5,7 @@ import requestCryptoList from "../../api/coingecko/cryptoList"
 
 export interface CryptoListState {
   cryptos: ICrypto[]
-  status: "idle" | "loading" | "failed"
+  status: "idle" | "loading" | "failed"  | "success"
 }
 const initialState: CryptoListState = {
   cryptos: [],
@@ -24,7 +24,7 @@ export const cryptoListSlice = createAppSlice({
           state.status = "loading"
         },
         fulfilled: (state, action) => {
-          state.status = "idle"
+          state.status = "success"
           if (action.payload) {
             state.cryptos = []
             state.cryptos.push(...action.payload)
