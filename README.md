@@ -17,3 +17,10 @@ If you want to run on your computer the steps are:
 - Crypto details page with chart
 - Connect any Ethereum wallet through the EIP 6963 protocol (supports multi wallet)
 - Shows user Ethereum balance
+
+## Details page with chart
+![image](https://github.com/lucasportella/crypto-list/assets/63923113/655adf9f-ff48-4e85-89f0-73b908d9e386)
+
+
+## Multi Wallet implementation
+![image](https://github.com/lucasportella/crypto-list/assets/63923113/562489d2-ff45-4882-9244-583b22bb7a03)
