@@ -7,7 +7,7 @@ import {
   addCrypto,
   selectStatus
 } from "../features/cryptoList/cryptoListSlice";
-import CryptoList from "../components/CryptoList";
+import CryptoList from "../features/cryptoList/CryptoList";
 import { Loading } from "../components/loading/loading";
 
 const Home: React.FC = () => {

@@ -5,7 +5,7 @@ import { walletSlice } from "../features/wallet/walletSlice";
 import { cryptoDetailsSlice } from "../features/cryptoDetails/CryptoSlice";
 import { cryptoVariationSlice } from "../features/cryptoVariation/cryptoVariationSlice";
 
-const rootReducer = combineSlices(cryptoListSlice, walletSlice, cryptoDetailsSlice, cryptoVariationSlice)
+export const rootReducer = combineSlices(cryptoListSlice, walletSlice, cryptoDetailsSlice, cryptoVariationSlice)
 export type RootState = ReturnType<typeof rootReducer>;
 export const store = configureStore({
   reducer: rootReducer,

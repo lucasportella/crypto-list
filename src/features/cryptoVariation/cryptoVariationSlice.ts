@@ -4,7 +4,7 @@ import requestCryptoVariation from "../../api/coingecko/cryptoVariation"
 
 export interface CryptoListState {
   cryptoVariation: ICryptoVariation
-  status: "idle" | "loading" | "failed"
+  status: "idle" | "loading" | "failed" | "success"
 }
 
 const initialState: CryptoListState = {
@@ -28,7 +28,7 @@ export const cryptoVariationSlice = createAppSlice({
           state.status = "loading"
         },
         fulfilled: (state, action) => {
-          state.status = "idle"
+          state.status = "success"
           if (action.payload) {
             state.cryptoVariation = JSON.parse(JSON.stringify(action.payload))
           }
