@@ -6,19 +6,23 @@ import {
 import { addCryptoDetails, selectStatus } from "../features/cryptoDetails/CryptoSlice";
 import CryptoDetails from "../features/cryptoDetails/CryptoDetails";
 import { Loading } from "../components/loading/loading";
-import { addVariation } from "../features/cryptoVariation/cryptoVariationSlice";
+import { addVariation, selectStatus as variationSelectStatus } from "../features/cryptoVariation/cryptoVariationSlice";
+// import {selectStatus as variationStatus} from "../features/cryptoVariation/cryptoVariationSlice"
 import { useLocation } from "react-router-dom";
 const Details: React.FC = () => {
   const location = useLocation()
   const cryptoId = location.pathname.slice(1)
   const dispatch = useAppDispatch()
+
     useEffect(() => {
     dispatch(addCryptoDetails(cryptoId))
     dispatch(addVariation(cryptoId))
   }, [dispatch, cryptoId])
-  const status = useAppSelector(selectStatus)
+
+  const detailsStatus = useAppSelector(selectStatus)
+  const variationStatus = useAppSelector(variationSelectStatus)
   const dataToRender = () => {
-    switch (status) {
+    switch (detailsStatus || variationStatus) {
       case "success":
         return <CryptoDetails />
       case "failed":
@@ -34,7 +38,6 @@ const Details: React.FC = () => {
       <section className=" w-full self-center flex flex-col justify-around lg:w-4/5 h-full">
         {dataToRender()}
       </section>
-
     </section >
   );
 }

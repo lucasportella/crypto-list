@@ -38,6 +38,9 @@ const request = async (route: string, type: string): Promise<RequestResponse> =>
 
     });
     const data = await response.json();
+    if (data.error) {
+      return generateErrorReturn(data.error)
+    }
     return generateDefaultReturn(data)
   } catch (error) {
     console.error('Error:', error);
