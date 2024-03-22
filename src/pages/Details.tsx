@@ -7,7 +7,6 @@ import { addCryptoDetails, selectStatus } from "../features/cryptoDetails/Crypto
 import CryptoDetails from "../features/cryptoDetails/CryptoDetails";
 import { Loading } from "../components/loading/loading";
 import { addVariation, selectStatus as variationSelectStatus } from "../features/cryptoVariation/cryptoVariationSlice";
-// import {selectStatus as variationStatus} from "../features/cryptoVariation/cryptoVariationSlice"
 import { useLocation } from "react-router-dom";
 const Details: React.FC = () => {
   const location = useLocation()
