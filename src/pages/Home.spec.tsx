@@ -1,5 +1,5 @@
 import { vi, beforeEach, afterEach, describe, test, expect } from 'vitest'
-import { mockedCryptoListResponse } from '../mocks/cryptoListResponse';
+// import { mockedCryptoListResponse } from '../mocks/cryptoListResponse';
 import { renderWithProviders } from '../utils/test-utils/test-utils';
 import Home from './Home';
 import { screen } from '@testing-library/react';
