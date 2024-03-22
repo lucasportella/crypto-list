@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { formatDollarValue } from "../utils/formatString";
 import { useAppDispatch } from "../app/hooks";
 import { addCryptoDetails } from "../features/cryptoDetails/CryptoSlice";
+import { ButtonsContainer } from "./nav/ButtonsContainer";
 const CryptoList: React.FC = () => {
   const cryptos = useAppSelector(selectCryptos)
   const dispatch = useAppDispatch()
@@ -43,7 +44,9 @@ const CryptoList: React.FC = () => {
   ))
   return (
     <section className="border flex flex-col border-gray-600 px-2 items-center py-6 w-full self-center  rounded-md gap-2 overflow-auto h-4/5 lg:px-0  md:w-4/5">
-      {/* <span className="title px-2">Top 10 crypto currencies</span> */}
+      <div className="lg:w-3/5 w-full">
+        <ButtonsContainer text="refresh list" />
+      </div>
       {renderData}
     </section>
   );

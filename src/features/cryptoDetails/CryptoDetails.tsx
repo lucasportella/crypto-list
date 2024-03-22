@@ -3,14 +3,15 @@ import Chart from "../../components/chart/LineChart";
 import { formatDollarValue } from "../../utils/formatString";
 import { useAppSelector } from "../../app/hooks";
 import { selectDetails } from "./CryptoSlice";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { addVariation, selectVariation } from "../cryptoVariation/cryptoVariationSlice";
 import { addCryptoDetails } from "./CryptoSlice";
 import { useAppDispatch } from "../../app/hooks";
-// import { ICryptoVariation } from "../../api/coingecko/cryptoVariation";
+import { ButtonsContainer } from "../../components/nav/ButtonsContainer";
 
 const CryptoDetails: React.FC = () => {
   const [showFull, setShowFull] = useState(false);
+  const navigate = useNavigate()
 
   const cryptoDetails = useAppSelector(selectDetails)
   const cryptoVariation = useAppSelector(selectVariation)
@@ -51,7 +52,8 @@ const CryptoDetails: React.FC = () => {
     <>
       {
         cryptoDetails.id && (
-          <section key={cryptoDetails.id} className="flex border rounded-lg w-full  md:p-10 p-2 gap-4 border-gray-600 flex-col h-fit min-h-full">
+          <section key={cryptoDetails.id} className="border flex  w-full  md:p-10 p-2 gap-4  flex-col h-fit min-h-full">
+            <ButtonsContainer text="Homepage" handleClick={() => navigate("/")} />
             <div className="flex gap-2 items-center">
               <img
                 src={cryptoDetails.image.large}
