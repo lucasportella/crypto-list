@@ -3,7 +3,7 @@ import {
   useAppSelector,
   // useAppDispatch
 } from "../app/hooks";
-import { selectStatus } from "../features/cryptoDetails/CryptoSlice";
+import { selectStatus } from "../features/cryptoList/cryptoListSlice";
 import { Wallet } from "../features/wallet/Wallet";
 import { useNavigate } from "react-router-dom";
 import CryptoDetails from "../features/cryptoDetails/CryptoDetails";

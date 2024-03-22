@@ -39,7 +39,7 @@ const Home: React.FC = () => {
           <button
             // onClick={() => { dispatch(addCrypto({})) }}
             className="home-button"
-          >refresh list</button>
+          >Refresh List</button>
         </div>
         {dataToRender()}
       </section>

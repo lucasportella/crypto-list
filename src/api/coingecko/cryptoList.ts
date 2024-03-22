@@ -1,8 +1,10 @@
 import request, { BASE_URL, COIN_GECKO_API, API_KEY, RequestResponse } from "./index";
 
-const requestCryptoList = async () => {
+export const requestCryptoListFullURL = `${BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&${COIN_GECKO_API}=${API_KEY}`
+
+export const requestCryptoList = async () => {
   const response: RequestResponse = await request(
-    `${BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&${COIN_GECKO_API}=${API_KEY}`, "GET")
+    requestCryptoListFullURL, "GET")
   if (response.error.hasError) {
     throw new Error(`Error while fetching crypto list.`);
 
