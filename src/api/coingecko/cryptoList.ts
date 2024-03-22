@@ -5,7 +5,6 @@ const requestCryptoList = async () => {
     `${BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&${COIN_GECKO_API}=${API_KEY}`, "GET")
   if (response.error.hasError) {
     throw new Error(`Error while fetching crypto list.`);
-
   }
   return response.data as ICrypto[]
 }

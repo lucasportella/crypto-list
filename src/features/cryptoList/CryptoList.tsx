@@ -1,10 +1,10 @@
 import React from "react";
-import { addCrypto, selectCryptos } from "../features/cryptoList/cryptoListSlice";
-import { useAppSelector } from "../app/hooks";
+import { addCrypto, selectCryptos } from "./cryptoListSlice";
+import { useAppSelector } from "../../app/hooks";
 import { useNavigate } from "react-router-dom";
-import { formatDollarValue } from "../utils/formatString";
-import { useAppDispatch } from "../app/hooks";
-import { ButtonsContainer } from "./nav/ButtonsContainer";
+import { formatDollarValue } from "../../utils/formatString";
+import { useAppDispatch } from "../../app/hooks";
+import { ButtonsContainer } from "../../components/nav/ButtonsContainer";
 const CryptoList: React.FC = () => {
   const cryptos = useAppSelector(selectCryptos)
   const dispatch = useAppDispatch()
@@ -12,6 +12,7 @@ const CryptoList: React.FC = () => {
     dispatch(addCrypto({}))
   }
   const navigate = useNavigate()
+
   const renderData = cryptos.map((item, index) => (
     <section key={item.id} className="flex border rounded-lg mb-4 w-full px-2 py-2 items-center gap-4 justify-between border-gray-600 lg:w-3/5 ">
       <div className="flex gap-2 items-center title">
@@ -33,9 +34,7 @@ const CryptoList: React.FC = () => {
 
       </div>
       <section className="flex items-center  gap-2">
-
         <button className="home-button" onClick={() => { navigate(`${item.id}`) }}>Details</button>
-
       </section>
     </section>
   ))
