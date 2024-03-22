@@ -18,35 +18,52 @@ export const Wallet = () => {
   }
 
   const renderConnectButton = () => (
-    <button onClick={handleConnect}>Connect</button>
+    <button className="home-button" onClick={handleConnect}>Connect</button>
   )
 
   useEffect(() => {
+    if (connected) {
+      setShowWallets(false)
+    }
     if (connected && provider && address) {
       getBalance(provider, dispatch, address)
     }
   }, [connected, provider, address, dispatch])
 
   const renderWalletPanel = () => (
-    <article>
-      <h3>
-      </h3>
-      <button onClick={() => dispatch(disconnect())}>
+    <article className="w-fit flex  gap-2  flex-col py-2 md:py-0">
+
+      <section>
+        <div className="flex gap-1 items-start flex-col  md:flex-row md:items-center  md:gap-2">
+          <p className="title">Address:</p>
+          <p className="subtitle">{address}</p>
+        </div>
+        <div className="flex gap-1  items-start  flex-col md:flex-row md:items-center md:gap-2">
+          <p className="title">eth balance:</p>
+          <p className="subtitle">{balance}</p>
+        </div>
+
+      </section>
+      <button
+        className="home-button w-fit"
+        onClick={() => dispatch(disconnect())}>
         Disconnect
       </button>
-      <div><p>Address</p>
-        <p>{address}</p>
-      </div>
-      <div>
-        <p>Balance</p>
-        <p>{balance}</p>
-      </div>
     </article>
   )
-
   return (
     <>
-      {showWallets && <WalletSelect />}
+      {!connected && showWallets &&
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className=" bg-gray-800 flex justify-center items-center rounded-lg shadow-lg p-6 relative  w-2/4 h-2/5 lg:w-1/4">
+            <button
+              onClick={() => setShowWallets(false)}
+              className="absolute right-2 top-2  px-2 py-1 subtitle border rounded">Back</button>
+            <WalletSelect />
+          </div>
+
+        </div>
+      }
       {connected && renderWalletPanel()}
       {!connected && renderConnectButton()}
     </>

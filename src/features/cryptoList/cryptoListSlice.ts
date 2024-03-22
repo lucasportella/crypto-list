@@ -1,11 +1,11 @@
 // import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "../../app/createAppSlice"
-import { ICrypto } from "../../interfaces/apiTypes"
-import requestCoinsList from "../../api/coingecko/list"
+import { ICrypto } from "../../api/coingecko/cryptoList"
+import requestCryptoList from "../../api/coingecko/cryptoList"
 
 export interface CryptoListState {
   cryptos: ICrypto[]
-  status: "idle" | "loading" | "failed"
+  status: "idle" | "loading" | "failed"  | "success"
 }
 const initialState: CryptoListState = {
   cryptos: [],
@@ -16,7 +16,7 @@ export const cryptoListSlice = createAppSlice({
   initialState,
   reducers: create => ({
     addCrypto: create.asyncThunk(async () => {
-      const response = await requestCoinsList()
+      const response = await requestCryptoList()
       return response
     },
       {
@@ -24,7 +24,7 @@ export const cryptoListSlice = createAppSlice({
           state.status = "loading"
         },
         fulfilled: (state, action) => {
-          state.status = "idle"
+          state.status = "success"
           if (action.payload) {
             state.cryptos = []
             state.cryptos.push(...action.payload)
