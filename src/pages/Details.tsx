@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
+  useAppDispatch,
   useAppSelector,
 } from "../app/hooks";
-import { selectStatus } from "../features/cryptoList/cryptoListSlice"
+import { addCryptoDetails, selectStatus } from "../features/cryptoDetails/CryptoSlice";
 import CryptoDetails from "../features/cryptoDetails/CryptoDetails";
 import { Loading } from "../components/loading/loading";
+import { addVariation } from "../features/cryptoVariation/cryptoVariationSlice";
+import { useLocation } from "react-router-dom";
 const Details: React.FC = () => {
+  const location = useLocation()
+  const cryptoId = location.pathname.slice(1)
+  const dispatch = useAppDispatch()
+    useEffect(() => {
+    dispatch(addCryptoDetails(cryptoId))
+    dispatch(addVariation(cryptoId))
+  }, [dispatch, cryptoId])
   const status = useAppSelector(selectStatus)
-
   const dataToRender = () => {
     switch (status) {
-      case "idle":
+      case "success":
         return <CryptoDetails />
       case "failed":
         return <p>Api has no return... </p>

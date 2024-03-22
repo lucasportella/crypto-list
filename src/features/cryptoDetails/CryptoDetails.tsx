@@ -1,24 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Chart from "../../components/chart/LineChart";
 import { formatDollarValue } from "../../utils/formatString";
 import { useAppSelector } from "../../app/hooks";
 import { selectDetails } from "./CryptoSlice";
-import { useLocation, useNavigate } from 'react-router-dom';
-import { addVariation, selectVariation } from "../cryptoVariation/cryptoVariationSlice";
-import { addCryptoDetails } from "./CryptoSlice";
-import { useAppDispatch } from "../../app/hooks";
+import { useNavigate } from 'react-router-dom';
+import { selectVariation } from "../cryptoVariation/cryptoVariationSlice";
 import { ButtonsContainer } from "../../components/nav/ButtonsContainer";
 
 const CryptoDetails: React.FC = () => {
   const [showFull, setShowFull] = useState(false);
   const navigate = useNavigate()
-
   const cryptoDetails = useAppSelector(selectDetails)
   const cryptoVariation = useAppSelector(selectVariation)
-  const dispatch = useAppDispatch()
   const maxLength = 400
-  const location = useLocation()
-  const cryptoId = location.pathname.slice(1)
   const toggleDescription = () => {
     setShowFull(!showFull);
   }
@@ -43,11 +37,6 @@ const CryptoDetails: React.FC = () => {
     </section>
 
   )
-
-  useEffect(() => {
-    dispatch(addCryptoDetails(cryptoId))
-    dispatch(addVariation(cryptoId))
-  }, [dispatch, cryptoId])
   return (
     <>
       {
