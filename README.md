@@ -1,6 +1,9 @@
 # Crypto List
 This project aims to fetch the most valuated cryptos in the market and provide the option for the user to connect his wallets and show it's balances.
 
+## Development
+Although very small and simple, I decided to use Redux for state management since it's been a long time that I have used that library and it was my first contact to the toolkit. Simple CSS styles through Tailwind, which is a very easy but powerful library. Coin Gecko API was used to fetch data. To connect to Ethereum wallets I used the most recent protocol which is the EIP 6963. No libraries like Web3 js were used to handle the connection to the crpyto Networks, only ethers lib was used once to decode the balance response.  Vitest and RTL were used for tests.
+
 ## How to run
 This app is deployed at [https://crypto-list-omega.vercel.app/](https://crypto-list-omega.vercel.app/)
 
