@@ -41,7 +41,7 @@ const CryptoDetails: React.FC = () => {
     <>
       {
         cryptoDetails.id && (
-          <section key={cryptoDetails.id} className="border rounded border-gray-600 flex  w-full  md:p-10 p-2 gap-4  flex-col h-fit min-h-full">
+          <section key={cryptoDetails.id} className=" flex  w-full  md:p-10 p-2 gap-4  flex-col h-fit min-h-full">
             <ButtonsContainer text="Homepage" handleClick={() => navigate("/")} />
             <div className="flex gap-2 items-center">
               <img
