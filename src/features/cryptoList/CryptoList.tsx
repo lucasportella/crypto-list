@@ -13,10 +13,10 @@ const CryptoList: React.FC = () => {
   }
   const navigate = useNavigate()
 
-  const renderData = cryptos.map((item, index) => (
+  const renderData = cryptos.map(item => (
     <section key={item.id} className="flex border rounded-lg mb-4 w-full px-2 py-2 items-center gap-4 justify-between border-gray-600 lg:w-3/5 ">
       <div className="flex gap-2 items-center title">
-        <span># {index + 1}</span>
+        <span># {item.market_cap_rank}</span>
         <img
           src={item.image}
           alt={item.id}
@@ -38,6 +38,7 @@ const CryptoList: React.FC = () => {
       </section>
     </section>
   ))
+
   return (
     <section className=" flex flex-col  px-2 items-center py-6 w-full self-center   gap-2 overflow-auto h-4/5 lg:px-0  md:w-4/5">
       <div className="lg:w-3/5 w-full">
